@@ -17,6 +17,7 @@ const rateOrder = (parcel: Parcel): Rate | void => {
     height
   );
 
+  // if the weight is not in oz unit we should normalize it first
   const maxWeight = Math.ceil(
     Math.max(weight, dimWeight)
   );
