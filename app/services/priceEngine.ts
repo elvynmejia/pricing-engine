@@ -1,5 +1,5 @@
 import { rates } from '../constants';
-import { Rate } from '../types';
+import { Rate, Parcel } from '../types';
 
 const DIM_DIVISOR: number = 139;
 
@@ -7,17 +7,10 @@ const calculateDimentionalWeight = (length: number, width: number, height: numbe
   return (
     (length * width * height) / DIM_DIVISOR
   );
-}
-
-type Parcel = {
-  zip: number;
-  length: number;
-  width: number;
-  height: number;
-  weight: number;
 };
 
-const rateOrder = ({ length, width, height, weight, zip }: Parcel): Rate | void => {
+const rateOrder = (parcel: Parcel): Rate | void => {
+  const { length, width, height, weight, zip } = parcel;
   const dimWeight = calculateDimentionalWeight(
     length,
     width,

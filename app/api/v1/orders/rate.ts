@@ -1,26 +1,27 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { Parcel } from '../../../types';
+import { Parcel, Rate } from '../../../types';
 import { rateOrder } from '../../../services/priceEngine';
 
 const router: Router = Router();
 
 router.post('/orders/rate', (req: Request, res: Response, next: NextFunction) => {
   let parcel: Parcel = req.body.parcel;
-
   const {
     length,
     width,
     height,
     weight,
-    zip
+    zip,
+    unit
   } = parcel;
 
-  const rate = rateOrder({
+  const rate: Rate | void = rateOrder({
     length,
     width,
     height,
     weight,
-    zip
+    zip,
+    unit
   });
 
   if (rate) {

@@ -7,17 +7,17 @@ const { expect } = chai;
 
 chai.use(chaiHttp);
 
-const request = chai.request(server);
+let request: any;
+
+beforeEach(() => {
+  request = chai.request(server);
+});
+
+afterEach(() => {
+  request.close();
+});
 
 describe('/api/v1/orders', () => {
-  describe('get', () => {
-    it('matches expected text', async () => {
-      const response = await request.get('/api/v1/orders');
-      expect(response.status).to.equal(200);
-      expect(response.text).to.eq('Express + TypeScript Server')
-    });
-  });
-
   describe('/rate', () => {
     context('success', () => {
       it('finds coverage', async () => {
@@ -46,7 +46,7 @@ describe('/api/v1/orders', () => {
     });
 
     context('error', () => {
-      it.only('unable to find coverge', async () => {
+      it('unable to find coverge', async () => {
         const response = await request
           .post('/api/v1/orders/rate')
           .send({
@@ -60,8 +60,6 @@ describe('/api/v1/orders', () => {
             }
           });
         expect(response.status).to.equal(422);
-        console.log(response.body.errors);
-
         expect(response.body.errors).to.deep.eq([
           {
             message: 'Unable to find shipping coverage for given parcel. Make sure the weight and dimentional weight does not surpase agreed weight limit of 800 oz',
