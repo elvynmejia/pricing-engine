@@ -1,13 +1,15 @@
 import express, { Express, Request, Response } from 'express';
+import rateRouter from './api/v1/orders/rate';
 
 const app: Express = express();
-const port = process.env.PORT || 3000;
 
-const logger = console;
-app.get('/', (req: Request, res: Response) => {
+app.get('/api/v1/orders', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');
 });
 
-app.listen(port, () => {
-  logger.log(`⚡️[server]: Server is running on port: ${port}`);
-});
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.use('/api/v1', rateRouter);
+
+export default app;
