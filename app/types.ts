@@ -1,9 +1,12 @@
-interface Parcel {
-  zip: number;
-  weight: number;
+interface DimensionalWeight {
   height: number;
   length: number;
   width: number;
+};
+
+interface Parcel extends DimensionalWeight {
+  zip: number;
+  weight: number;
   unit: string;
 };
 
@@ -17,6 +20,7 @@ type Rate = {
 };
 
 export {
+  DimensionalWeight,
   Parcel,
   Rate
 }

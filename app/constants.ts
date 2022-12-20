@@ -1,5 +1,7 @@
 import { Rate } from './types';
 
+const MAX_ALLOWED_WEIGHT: number = 800;
+
 const rates: Rate[] = [
   {
     price: 10,
@@ -60,5 +62,6 @@ const rates: Rate[] = [
 ];
 
 export {
+  MAX_ALLOWED_WEIGHT,
   rates
 }
