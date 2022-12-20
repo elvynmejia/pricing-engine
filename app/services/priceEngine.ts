@@ -5,7 +5,8 @@ const DIM_DIVISOR: number = 139;
 
 const calculateDimentionalWeight = (dimensions: DimensionalWeight): number => {
   const { length, width, height } = dimensions;
-  return (
+
+  return Math.ceil(
     (length * width * height) / DIM_DIVISOR
   );
 };
@@ -20,9 +21,7 @@ const rateOrder = (parcel: Parcel): Rate | void => {
   });
 
   // if the weight is not in oz unit we should normalize it first
-  const maxWeight = Math.ceil(
-    Math.max(weight, dimWeight)
-  );
+  const maxWeight = Math.max(weight, dimWeight)
 
   return rates.find(rate => {
     return rate.zip === zip && rate.price <= maxWeight
