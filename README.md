@@ -47,8 +47,34 @@ curl --location --request POST 'localhost:3000/api/v1/orders/rate' \
 {
     "errors": [
         {
-            "message": "Unable to find shipping coverage for given parcel. Make sure the weight and dimentional weight does not surpase agreed weight limit of 800 oz",
-            "field": "Check fields: weight, height, length or width for possible errors"
+            "message": "Unable to find shipping coverage for zip 11111",
+            "field": "zip"
+        }
+    ],
+    "message": "Unprocessable Entity"
+}
+```
+```
+# request that surpasses max weight limit
+curl --location --request POST 'localhost:3000/api/v1/orders/rate' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "parcel":{
+        "weight":1000,
+        "height":100,
+        "length":100,
+        "width":100,
+        "unit":"oz",
+     "zip":94107
+   }
+}'
+
+# response
+{
+    "errors": [
+        {
+            "message": "Parcel's weight or dimentional weight is greater than the weight limit of 800 oz",
+            "field": "weight, height, length or width"
         }
     ],
     "message": "Unprocessable Entity"
