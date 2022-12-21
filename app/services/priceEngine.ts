@@ -24,7 +24,7 @@ const rateOrder = (parcel: Parcel): Rate | void => {
   const maxWeight = Math.max(weight, dimWeight)
 
   return rates.find(rate => {
-    return rate.zip === zip && rate.price <= maxWeight
+    return rate.zip === zip && rate.max_weight <= maxWeight
   });
 }
 

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node compiled/server.js",
+    "start": "tsc && node compiled/server.js",
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "lint-fix": "tslint -c tslint.json -p tsconfig.json --fix",
     "test": "mocha -r ts-node/register spec/**/*.spec.ts --reporter spec --exit"
