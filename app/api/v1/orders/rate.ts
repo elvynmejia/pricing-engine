@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import { Parcel, Rate } from '../../../types';
+import { Parcel, Rate } from '../../../types/internal';
 import { MAX_ALLOWED_WEIGHT } from '../../../constants';
 
 import { ratePresenter } from '../../../presenters/rate';
@@ -42,7 +42,9 @@ router.post('/rate', (req: Request, res: Response) => {
   const rate: Rate | void = rateOrder(parcel);
 
   if (rate) {
-    return res.status(200).json({ ...ratePresenter(rate) }); // sanitize rate so it doesn't leak important info
+    return res.status(200).json({
+      ...ratePresenter(rate)
+    });
   } else {
     return res.status(422).json({
       errors: [{

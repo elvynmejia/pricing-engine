@@ -1,4 +1,4 @@
-import { Rate } from './types';
+import { Rate } from './types/internal';
 
 const MAX_ALLOWED_WEIGHT: number = 800;
 

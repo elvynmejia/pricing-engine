@@ -1,18 +1,10 @@
-type Rate = {
-  price: number;
-  zip: number;
-  // max_weight: number;
-  carrier: string;
-  unit: string;
-  region: string;
-};
+import { Rate as InternalRate } from '../types/internal';
+import { Rate as ExternalRate } from '../types/external';
 
-// should take an internal rate of type import { Rate } from '../../../types';
-export const ratePresenter = (rate: any): Rate => {
+export const ratePresenter = (rate: InternalRate): ExternalRate => {
   return {
     price: rate.price,
     zip: rate.zip,
-    // max_weight: number;
     carrier: rate.carrier,
     unit: rate.unit,
     region: rate.region,

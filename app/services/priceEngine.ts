@@ -1,5 +1,5 @@
 import { rates, MAX_ALLOWED_WEIGHT } from '../constants';
-import { Rate, Parcel, DimensionalWeight } from '../types';
+import { Rate, Parcel, DimensionalWeight } from '../types/internal';
 
 const DIM_DIVISOR: number = 139;
 
