@@ -1,4 +1,4 @@
-import { rates } from '../constants';
+import { rates, MAX_ALLOWED_WEIGHT } from '../constants';
 import { Rate, Parcel, DimensionalWeight } from '../types';
 
 const DIM_DIVISOR: number = 139;
@@ -21,10 +21,10 @@ const rateOrder = (parcel: Parcel): Rate | void => {
   });
 
   // if the weight is not in oz unit we should normalize it first
-  const maxWeight = Math.max(weight, dimWeight)
+  const billableWeight = Math.max(weight, dimWeight)
 
   return rates.find(rate => {
-    return rate.zip === zip && rate.max_weight <= maxWeight
+    return rate.zip === zip && billableWeight <= MAX_ALLOWED_WEIGHT
   });
 }
 

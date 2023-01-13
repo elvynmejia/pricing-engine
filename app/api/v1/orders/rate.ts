@@ -2,6 +2,8 @@ import { Router, Request, Response } from 'express';
 import { Parcel, Rate } from '../../../types';
 import { MAX_ALLOWED_WEIGHT } from '../../../constants';
 
+import { ratePresenter } from '../../../presenters/rate';
+
 import {
   rateOrder,
   calculateDimentionalWeight
@@ -17,11 +19,11 @@ const isWeightValid = (parcel: Parcel): boolean => {
     height
   });
 
-  if (parcel.weight <= MAX_ALLOWED_WEIGHT || dimWeight <= MAX_ALLOWED_WEIGHT) {
-    return true;
+  if (parcel.weight > MAX_ALLOWED_WEIGHT || dimWeight > MAX_ALLOWED_WEIGHT) {
+    return false;
   }
 
-  return false;
+  return true;
 };
 
 router.post('/rate', (req: Request, res: Response) => {
@@ -40,7 +42,7 @@ router.post('/rate', (req: Request, res: Response) => {
   const rate: Rate | void = rateOrder(parcel);
 
   if (rate) {
-    return res.status(200).json(rate);
+    return res.status(200).json({ ...ratePresenter(rate) }); // sanitize rate so it doesn't leak important info
   } else {
     return res.status(422).json({
       errors: [{

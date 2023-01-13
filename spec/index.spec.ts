@@ -33,11 +33,11 @@ describe('/api/v1/orders', () => {
               zip: 94107
             }
           });
+
         expect(response.status).to.equal(200);
         expect(response.body).to.deep.eq({
           price: 10,
           zip: 94107,
-          max_weight: 800,
           carrier: 'x',
           unit: 'oz',
           region: 'local'
