@@ -1,6 +1,37 @@
-import { Rate } from './types/internal';
+import { Rate, CarrierCoverage } from './types/internal';
 
 const MAX_ALLOWED_WEIGHT: number = 800;
+
+const carrierCoverage: CarrierCoverage[] = [
+  {
+    zip: 94107,
+    name: 'x',
+  },
+  {
+    zip: 94108,
+    name: 'y',
+  },
+  {
+    zip: 94109,
+    name: 'z',
+  },
+  {
+    zip: 94110,
+    name: 'x',
+  },
+  {
+    zip: 94111,
+    name: 'y',
+  },
+  {
+    zip: 94112,
+    name: 'z',
+  },
+  {
+    zip: 94113,
+    name: 'x',
+  }
+];
 
 const rates: Rate[] = [
   {
@@ -63,5 +94,6 @@ const rates: Rate[] = [
 
 export {
   MAX_ALLOWED_WEIGHT,
-  rates
+  rates,
+  carrierCoverage
 }

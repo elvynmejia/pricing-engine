@@ -19,7 +19,17 @@ type Rate = {
   region: string;
 };
 
+interface Carrier {
+  name: string;
+};
+
+interface CarrierCoverage extends Carrier {
+  zip: number;
+};
+
 export {
+  Carrier,
+  CarrierCoverage,
   DimensionalWeight,
   Parcel,
   Rate
