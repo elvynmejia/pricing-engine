@@ -1,4 +1,10 @@
 # NodeJS API to rate/price shipping orders based on given parcel attributes
+
+https://www.figma.com/file/Tona5Hh1jdzRr0DV0wPTGV/pricing-engine?type=whiteboard&node-id=0%3A1&t=2zRxTslSBJm0ceHs-1
+
+https://docs.google.com/presentation/d/1weo81DnnHLnKtDFb4_fKjB_pseL5gxAsKsyUNFMa1H0/edit?usp=sharing
+
+
 ## example POST success where shipping coverage can be found
 ```
 # request based on zip coverage
